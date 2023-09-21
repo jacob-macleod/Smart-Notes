@@ -1,16 +1,10 @@
 # smart_notes
 
-A new Flutter project.
+This is a notes app made in flutter
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Branches
+* `main` is used for full releases
+* `development` is used for active development
+* Other branches are used to develop full features before pushing to the `development` branch
+  * The branches are named with the convention of type: issue description #issue_number
+  * One branch should be created per issue
