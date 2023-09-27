@@ -7,7 +7,6 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smart_notes/widgets/gradient_background.dart';
-import 'package:smart_notes/widgets/title_text.dart';
 import 'package:smart_notes/main.dart';
 
 void main() {
