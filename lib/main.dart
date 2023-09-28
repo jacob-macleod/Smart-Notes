@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_notes/widgets/gradient_background.dart';
+import 'package:smart_notes/widgets/title_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,13 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: GradientBackground(
-          widget: Text("Hello World"),
+          widget: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30),
+              TitleText(text: "Hello World"),
+            ],
+          ),
         ),
       ),
     );

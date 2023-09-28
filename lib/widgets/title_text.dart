@@ -6,9 +6,16 @@ class TitleText extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.displayLarge,
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Text(
+        text,
+        style: const TextStyle(
+            backgroundColor: Colors.transparent,
+            color: Color.fromRGBO(204, 209, 227, 1),
+            fontSize: 28,
+            fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
