@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_notes/widgets/gradient_background.dart';
-import 'package:smart_notes/widgets/title_text.dart';
+import 'package:smart_notes/widgets/note_item.dart';
+
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -22,7 +22,10 @@ class MainPage extends StatelessWidget {
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
               ),
-              children: [],
+              children: const [
+                NoteItem(title: "My Note", body: "This is my note"),
+                NoteItem(title: "My title", body: "This is placeholder text"),
+              ],
             ),
           ),
         ],
