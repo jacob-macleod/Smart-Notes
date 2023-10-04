@@ -14,15 +14,32 @@ class MainPage extends StatelessWidget {
           SizedBox(height: 30),
           TitleText(text: "Your Notes"),
           Container(
-            height: 500,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+            ),
+            height: 700,
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 3 / 2,
+                childAspectRatio: 3 / 4,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
               ),
-              children: const [
+              children: [
+                Container(
+                  height: 2000,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                  ),
+                ),
+                NoteItem(title: "My Note", body: "This is my note"),
+                NoteItem(title: "My title", body: "This is placeholder text"),
+                NoteItem(title: "My Note", body: "This is my note"),
+                NoteItem(title: "My title", body: "This is placeholder text"),
+                NoteItem(title: "My Note", body: "This is my note"),
+                NoteItem(title: "My title", body: "This is placeholder text"),
+                NoteItem(title: "My Note", body: "This is my note"),
+                NoteItem(title: "My title", body: "This is placeholder text"),
                 NoteItem(title: "My Note", body: "This is my note"),
                 NoteItem(title: "My title", body: "This is placeholder text"),
               ],
