@@ -17,6 +17,7 @@ class MainPage extends StatelessWidget {
           Container(
             height: 700,
             child: GridView(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 3 / 4,
