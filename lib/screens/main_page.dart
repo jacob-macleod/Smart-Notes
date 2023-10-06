@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_notes/widgets/note_item.dart';
-
+import 'package:smart_notes/widgets/title_text.dart';
+import 'package:smart_notes/widgets/gradient_background.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -14,9 +15,6 @@ class MainPage extends StatelessWidget {
           SizedBox(height: 30),
           TitleText(text: "Your Notes"),
           Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white),
-            ),
             height: 700,
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -26,12 +24,6 @@ class MainPage extends StatelessWidget {
                 mainAxisSpacing: 20,
               ),
               children: [
-                Container(
-                  height: 2000,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                  ),
-                ),
                 NoteItem(title: "My Note", body: "This is my note"),
                 NoteItem(title: "My title", body: "This is placeholder text"),
                 NoteItem(title: "My Note", body: "This is my note"),
