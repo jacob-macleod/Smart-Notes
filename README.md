@@ -10,3 +10,6 @@ This is a notes app made in flutter
   * The branches are named with the convention of type #issue_number
   * The commits are named with the convention of type: description #issue_number
   * One branch should be created per issue
+
+## Storage
+Notes are stored with Hive
