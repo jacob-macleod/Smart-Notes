@@ -5,11 +5,16 @@ import 'package:smart_notes/widgets/gradient_background.dart';
 import 'package:smart_notes/notes.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+  const MainPage(this.box, {super.key});
+  final box;
+
   @override
   Widget build(BuildContext context) {
     // Generate demo notes - should run once!
     List notes = [];
+    SaveNote("hello world", box);
+
+
     return GradientBackground(
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_notes/screens/main_page.dart';
+import 'package:hive/hive.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
-  await SharedPreferences.getInstance();
-  runApp(const MyApp());
+  await Hive.initFlutter();
+  var box = await Hive.openBox("notes");
+
+  runApp(MyApp(box));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp(this.box, {super.key});
+  final box;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: MainPage(),
+        body: MainPage(box),
       ),
     );
   }
