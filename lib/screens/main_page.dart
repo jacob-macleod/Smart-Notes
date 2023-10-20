@@ -12,8 +12,10 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Generate demo notes - should run once!
     List notes = [];
-    SaveNote("hello world", box);
-
+    DeleteAllNotes(box);
+    SaveNote("my title", "my body", box);
+    SaveNote("my title2", "my body2", box);
+    SaveNote("my title3", "my body3", box);
 
     return GradientBackground(
       widget: Column(
