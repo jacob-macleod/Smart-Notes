@@ -16,4 +16,3 @@ void DeleteAllNotes(var box) {
     print ("Notes are now");
     print (my_box.get(1));
   }
-
