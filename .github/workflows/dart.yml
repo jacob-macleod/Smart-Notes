@@ -1,12 +1,23 @@
+# TODO List
+# Feature branches: test
+# Dev: test, build
+# Main: tets, build to apk, anlyse, send email notification
+# Make it so you ccant push to main or dev, only PR
+# Make it so dev automatically gets merged into main every two weeks
+
 name: CI
 on:
+  push:
+    branches:
+      - '*'
   pull_request:
-    branches: 
+    branches:
       - main
-
+      - development
+      
 jobs:
   flutter_test:
-    name: Run flutter test and analyze
+    name: Flutter Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,5 +28,37 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter analyze
       - run: flutter test
+
+  flutter_build:
+    name: Flutter Build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development'
+    needs: flutter_test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with: 
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter build apk    
+  
+  flutter_analyse:
+    name: Flutter Analyse
+    if: github.ref == 'refs/heads/main'
+    needs: flutter_test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with: 
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter analyse    
+    
