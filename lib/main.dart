@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:smart_notes/widgets/gradient_background.dart';
-import 'package:smart_notes/widgets/title_text.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_notes/screens/main_page.dart';
+import 'package:hive/hive.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await Hive.initFlutter();
+  var box = await Hive.openBox("notes");
+
+  runApp(MyApp(box));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp(this.box, {super.key});
+  final box;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: GradientBackground(
-          widget: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 30),
-              TitleText(text: "Hello World"),
-            ],
-          ),
-        ),
+        body: MainPage(box),
       ),
     );
   }
