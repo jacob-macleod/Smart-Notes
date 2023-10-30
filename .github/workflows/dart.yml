@@ -49,6 +49,13 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/flutter-apk/app-release.apk
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "build/app/outputs/flutter-apk/app-release.apk"
+          tags: true
+          draft: true
   
   flutter_analyse:
     name: Flutter Analyse
