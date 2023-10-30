@@ -8,12 +8,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smart_notes/widgets/gradient_background.dart';
 import 'package:smart_notes/main.dart';
+import 'package:hive/hive.dart';
 
 void main() {
   testWidgets('MyApp has a title and a gradient background',
       (WidgetTester tester) async {
+    await Hive.initFlutter();
+    var box = await Hive.openBox("notes");
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MyApp(box));
 
     // Verify that our title text is displayed.
     //expect(find.byType(TitleText), findsOneWidget);
