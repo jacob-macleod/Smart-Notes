@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
+      - uses: actions/checkout@v2
       - run: touch README.md
       - name: Create release and upload apk
         uses: underwindfall/create-release-with-debugapk@v2.0.0
@@ -31,7 +32,6 @@ jobs:
           asset_path: README.md
           asset_name: test.md
           asset_content_type: application/zip
-      - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with: 
           java-version: "12.x"
