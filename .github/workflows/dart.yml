@@ -49,13 +49,28 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/flutter-apk/app-release.apk
-      - uses: actions/create-release@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "build/app/outputs/flutter-apk/app-release.apk"
-          tags: false
-          draft: true
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: Made some changes
+          prerelease: false
+          draft: false
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: "build/app/outputs/flutter-apk/app-release.apk"
+          asset_name: release.apk
+          asset_content_type: application/zip
+
   
   flutter_analyse:
     name: Flutter Analyse
