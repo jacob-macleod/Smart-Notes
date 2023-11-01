@@ -19,7 +19,6 @@ jobs:
   flutter_test:
     name: Flutter Test
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
@@ -33,6 +32,7 @@ jobs:
 
   flutter_build:
     name: Flutter Build
+    permissions: write-all
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development'
     needs: flutter_test
     runs-on: ubuntu-latest
