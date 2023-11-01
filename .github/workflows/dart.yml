@@ -27,7 +27,7 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.0
+          tag_name: v1.1.0
           asset_path: README.md
           asset_name: test.md
           asset_content_type: application/zip
