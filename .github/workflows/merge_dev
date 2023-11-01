@@ -1,0 +1,21 @@
+name: Auto Merge Development to Main
+
+on:
+  schedule:
+    - cron: '0 0 */14 * *'  # Schedule to run every two weeks (adjust the schedule as needed)
+
+jobs:
+  merge_development:
+    name: Merge Development to Main
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge Development to Main
+        run: |
+          git checkout main
+          git pull
+          git merge development --no-ff -m "Merge development into main"
+          git push
