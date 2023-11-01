@@ -19,6 +19,7 @@ jobs:
   flutter_test:
     name: Flutter Test
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: Create release and upload apk
         uses: underwindfall/create-release-with-debugapk@v2.0.0
