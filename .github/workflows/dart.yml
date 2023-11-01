@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
+      - run: touch README.md
       - name: Create release and upload apk
         uses: underwindfall/create-release-with-debugapk@v2.0.0
         env:
