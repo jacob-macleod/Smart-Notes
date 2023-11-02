@@ -32,6 +32,7 @@ jobs:
 
   flutter_build:
     name: Flutter Build
+    permissions: write-all
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development'
     needs: flutter_test
     runs-on: ubuntu-latest
@@ -45,17 +46,17 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter build apk
-      - uses: actions/upload-artifact@v3
-        with:
-          name: apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-      - uses: actions/create-release@v1
+      - run: echo "build/app/outputs/flutter-apk/app-release.apk"
+      - name: Create release and upload apk
+        uses: underwindfall/create-release-with-debugapk@v2.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "build/app/outputs/flutter-apk/app-release.apk"
-          tags: false
-          draft: true
+          tag_name: v0.1.0
+          asset_path: "build/app/outputs/flutter-apk/app-release.apk"
+          asset_name: release.apk
+          asset_content_type: application/zip
+
   
   flutter_analyse:
     name: Flutter Analyse
