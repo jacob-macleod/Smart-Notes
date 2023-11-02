@@ -10,26 +10,28 @@ void deleteAllNotes(var box) {
   void saveNote(String title, String body, var box) async {
     var my_box = Hive.box("notes");
     String notes = my_box.get(1);
-    notes = "$notes&&START_NOTE&&$title&&SEPERATOR&&$body";
+    notes = "$notes$title&&SEPERATOR&&$body&&START_NOTE&&";
     my_box.put(1, notes);
   }
 
 List<List<String>> getAllNotes(var box) {
-  print ("Getting all notes");
-  var my_box = Hive.box("notes");
-  String all_notes = my_box.get(1);
-  List<String> notes = all_notes.split("&&START_NOTE&&");
-  List<List<String>> noteData = [["", ""]];
+  var myBox = Hive.box("notes");
+  String allNotes = myBox.get(1);
+  List<String> notes = allNotes.split("&&START_NOTE&&");
+  List<List<String>> noteData = [["test0", "test1"]];
 
-  for (int i=0; i < notes.length; i++) {
+  // Replace allNotes with the data for the first element - this odd combination is to ensure the first note is not blank
+  List<String> firstNote = notes[0].split("&&SEPERATOR&&");
+  noteData[0][0] = firstNote[0];
+  noteData[0][1] = firstNote[0];
+
+  // If there are more notes
+  for (int i=1; i < notes.length; i++) {
     List<String> noteContent = notes[i].split("&&SEPERATOR&&");
     if (noteContent.length == 2) {
       noteData.add(noteContent);
-    } else {
-      print ("Note content is ");
-      print (noteContent);
     }
   }
-
+  
   return noteData;
 }
