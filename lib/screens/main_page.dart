@@ -7,7 +7,7 @@ import 'package:smart_notes/notes.dart';
 class MainPage extends StatelessWidget {
   const MainPage(this.box, this.changeView, {super.key});
   final box;
-  final Function(String) changeView;
+  final Function(String, {String title, String body}) changeView;
 
   @override
   Widget build(BuildContext context) {

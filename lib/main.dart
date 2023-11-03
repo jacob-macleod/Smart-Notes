@@ -24,18 +24,25 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String screen = "MainPage";
+  String noteTitle = "Title";
+  String noteBody = "Body";
   
-  void changeView(String view) {
+  void changeView(String view, {String title = "", String body = ""}) {
     setState(() {
       screen = view;
     });
+
+    if (title != "" && body != "") {
+      noteTitle = title;
+      noteBody = body;
+    }
   }
 
   Widget getView() {
     if (screen == "MainPage") {
       return MainPage(widget.box, changeView);
     } else if (screen == "NoteView") {
-      return const NoteView(title: "Title", body: "Body");
+      return NoteView(title: noteTitle, body: noteBody);
     } else {
       // print ("Wrong view selected: " + screen + " so showing main page");
       return MainPage(widget.box, changeView);
