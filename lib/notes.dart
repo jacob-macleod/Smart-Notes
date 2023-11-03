@@ -17,6 +17,7 @@ void deleteAllNotes(var box) {
 List<List<String>> getAllNotes(var box) {
   var myBox = Hive.box("notes");
   String allNotes = myBox.get(1);
+  print (allNotes);
   List<String> notes = allNotes.split("&&START_NOTE&&");
   List<List<String>> noteData = [["test0", "test1"]];
 

@@ -11,13 +11,18 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(context) {
     return NoteBackground(
-      child: Container(
-        height: 200,
-        child: Column(
-          children: [
-            NoteTitle(text: title),
-            NoteBody(text: body),
-          ],
+      child: InkWell(
+        onTap: () {
+          print ("Clicked note title " + title);
+        },
+        child: Container(
+          height: 200,
+          child: Column(
+            children: [
+              NoteTitle(text: title),
+              NoteBody(text: body),
+            ],
+          ),
         ),
       ),
     );
