@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:smart_notes/notes.dart';
 
 /*
 class Body extends StatelessWidget {
@@ -26,8 +26,9 @@ class Body extends StatelessWidget {
 }*/
 
 class Body extends StatelessWidget {
-  const Body({super.key, required this.text});
+  const Body({super.key, required this.text, required this.title});
   final text;
+  final title;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class Body extends StatelessWidget {
       width: 250,
       child: TextFormField(
         onChanged: (data) {
-          print ("Changed to" + data);
+          editNote(title, data);
         },
         initialValue: text,
         maxLines: 20,

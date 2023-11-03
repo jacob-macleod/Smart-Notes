@@ -16,7 +16,7 @@ class NoteView extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           TitleText(text: title), 
-          Body(text: body),
+          Body(text: body, title: title),
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
