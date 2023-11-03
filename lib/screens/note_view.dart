@@ -17,9 +17,14 @@ class NoteView extends StatelessWidget {
           const SizedBox(height: 20),
           TitleText(text: title), 
           Body(text: body),
-          TextButton(onPressed: () {
-            changeView("MainPage");
-          }, child: Text("Back"))
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: TextButton(onPressed: () {
+                changeView("MainPage");
+              }, child: const Text("Back")),
+            ),
+          )
           ],
         ),
       );

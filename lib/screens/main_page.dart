@@ -25,7 +25,7 @@ class MainPage extends StatelessWidget {
           const SizedBox(height: 30),
           const TitleText(text: "Your Notes"),
           Container(
-            height: 700,
+            height: 600,
             child: GridView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

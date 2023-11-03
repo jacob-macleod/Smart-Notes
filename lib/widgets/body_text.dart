@@ -7,14 +7,17 @@ class Body extends StatelessWidget {
   @override
   Widget build(context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Text(
-        text,
-        style: const TextStyle(
-            backgroundColor: Colors.transparent,
-            color: Color.fromRGBO(201, 201, 201, 1),
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
+      padding: const EdgeInsets.all(14.0),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Text(
+          text,
+          style: const TextStyle(
+              backgroundColor: Colors.transparent,
+              color: Color.fromRGBO(201, 201, 201, 1),
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
