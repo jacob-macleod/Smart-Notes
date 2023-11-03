@@ -4,9 +4,10 @@ import 'package:smart_notes/widgets/title_text.dart';
 import 'package:smart_notes/widgets/body_text.dart';
 
 class NoteView extends StatelessWidget {
-  const NoteView({ required this.title, required this.body, super.key});
+  const NoteView(this.changeView, { required this.title, required this.body, super.key});
   final title;
   final body;
+  final Function(String, {String title, String body}) changeView;
 
   @override
   Widget build (context) {
@@ -16,6 +17,9 @@ class NoteView extends StatelessWidget {
           const SizedBox(height: 20),
           TitleText(text: title), 
           Body(text: body),
+          TextButton(onPressed: () {
+            changeView("MainPage");
+          }, child: Text("Back"))
           ],
         ),
       );

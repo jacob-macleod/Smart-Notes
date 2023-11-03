@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     if (screen == "MainPage") {
       return MainPage(widget.box, changeView);
     } else if (screen == "NoteView") {
-      return NoteView(title: noteTitle, body: noteBody);
+      return NoteView(changeView, title: noteTitle, body: noteBody);
     } else {
       // print ("Wrong view selected: " + screen + " so showing main page");
       return MainPage(widget.box, changeView);
