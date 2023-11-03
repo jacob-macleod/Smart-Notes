@@ -9,6 +9,27 @@ void deleteAllNotes(var box) {
   my_box.put(1, "");
 }
 
+  void deleteNote(String title) {
+    var my_box = Hive.box("notes");
+    List<String> notes = my_box.get(1).split(noteSeperator);
+    String newNotes = "";
+
+
+    // Look at each note. If the title does not equal the title, add it to newNotes
+    for (int note = 0; note < notes.length; note ++) {
+      if (notes[note].split(titleSeperator)[0] != title) {
+        // Stop &&START_NOTES&& being appended twice
+        if (note != notes.length -1) {
+          newNotes += "${notes[note]}$noteSeperator";
+        } else {
+          newNotes += "${notes[note]}";
+        }
+      }
+    }
+
+    my_box.put(1, newNotes);
+  }
+
   // Notes are stored as &&START_NOTE&&Title&&SEPERATOR&&body$$START_NOTE$$...
   void saveNote(String title, String body) async {
     var my_box = Hive.box("notes");
@@ -22,27 +43,19 @@ void deleteAllNotes(var box) {
     var my_box = Hive.box("notes");
     List<String> notes = my_box.get(1).split(noteSeperator);
     String newNotes = "";
-
-    print ("Notes are ${my_box.get(1)}");
-    print ("Notes split  are ${my_box.get(1).split(noteSeperator)}");
-
     // Look at each note
     for (int note = 0; note < notes.length; note ++) {
-      print ("Looking at ${notes[note]}");
       if (notes[note].split(titleSeperator)[0] == title) {
         newNotes += "$title$titleSeperator$newBody$noteSeperator";
       } else {
         // Stop &&START_NOTES&& being appended twice
         if (note != notes.length -1) {
           newNotes += "${notes[note]}$noteSeperator";
-          print ("APPENDED ${notes[note]}$noteSeperator to $newNotes");
         } else {
           newNotes += "${notes[note]}";
-          print ("APPENDED ${notes[note]} to $newNotes - ELSE CASE");
         }
       }
     }
-    print ("new notes $newNotes");
 
     my_box.put(1, newNotes);
   }

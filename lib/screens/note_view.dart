@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_notes/widgets/gradient_background.dart';
 import 'package:smart_notes/widgets/title_text.dart';
 import 'package:smart_notes/widgets/body_text.dart';
+import 'package:smart_notes/notes.dart';
 
 class NoteView extends StatelessWidget {
   const NoteView(this.changeView, { required this.title, required this.body, super.key});
@@ -26,7 +27,8 @@ class NoteView extends StatelessWidget {
                     changeView("MainPage");
                   }, child: const Text("Back"),),
                     TextButton(onPressed: () {
-                    print ("Deleting");
+                    deleteNote(title);
+                    changeView("MainPage");
                   }, child: const Text("Delete")),
                 ],
               ),
