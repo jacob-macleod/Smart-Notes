@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TitleText extends StatelessWidget {
-  const TitleText({super.key, required this.text});
+class Body extends StatelessWidget {
+  const Body({super.key, required this.text});
   final String text;
 
   @override
@@ -12,8 +12,8 @@ class TitleText extends StatelessWidget {
         text,
         style: const TextStyle(
             backgroundColor: Colors.transparent,
-            color: Color.fromRGBO(204, 209, 227, 1),
-            fontSize: 40,
+            color: Color.fromRGBO(201, 201, 201, 1),
+            fontSize: 20,
             fontWeight: FontWeight.bold),
       ),
     );
