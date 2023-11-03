@@ -55,6 +55,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         body: getView(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromRGBO(32, 37, 55, 1),
+        foregroundColor: const Color.fromRGBO(153, 164, 203, 1),
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
       ),
     );
   }
