@@ -20,9 +20,16 @@ class NoteView extends StatelessWidget {
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: TextButton(onPressed: () {
-                changeView("MainPage");
-              }, child: const Text("Back")),
+              child: Row(
+                children: [
+                  TextButton(onPressed: () {
+                    changeView("MainPage");
+                  }, child: const Text("Back"),),
+                    TextButton(onPressed: () {
+                    print ("Deleting");
+                  }, child: const Text("Delete")),
+                ],
+              ),
             ),
           )
           ],
