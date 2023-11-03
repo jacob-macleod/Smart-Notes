@@ -5,8 +5,9 @@ import 'package:smart_notes/widgets/gradient_background.dart';
 import 'package:smart_notes/notes.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage(this.box, {super.key});
+  const MainPage(this.box, this.changeView, {super.key});
   final box;
+  final Function(String) changeView;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class MainPage extends StatelessWidget {
               children: [
                 for (final note in notes)
                   NoteItem(
+                    changeView: changeView,
                     title: note[0],
                     body: note[1],
                   ),
