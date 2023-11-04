@@ -9,13 +9,13 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
+      width: 350,
       child: TextFormField(
         onChanged: (data) {
           editNote(title, data);
         },
         initialValue: text,
-        maxLines: 20,
+        maxLines: 10,
         minLines: 10,
         autocorrect: true,
         style: const TextStyle(

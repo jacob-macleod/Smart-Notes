@@ -85,12 +85,14 @@ List<List<String>> getAllNotes(var box) {
   var myBox = Hive.box("notes");
   String allNotes = myBox.get(1);
   List<String> notes = allNotes.split(noteSeperator);
-  List<List<String>> noteData = [["test0", "test1"]];
+  List<List<String>> noteData = [["", ""]];
 
   // Replace allNotes with the data for the first element - this odd combination is to ensure the first note is not blank
   List<String> firstNote = notes[0].split(titleSeperator);
-  noteData[0][0] = firstNote[0];
-  noteData[0][1] = firstNote[1];
+  if (firstNote[0] != "") {
+    noteData[0][0] = firstNote[0];
+    noteData[0][1] = firstNote[1];
+  }
 
   // If there are more notes
   for (int i=1; i < notes.length; i++) {

@@ -25,17 +25,16 @@ class _addNoteOverlayState extends State<AddNoteOverlay>{
     if (errorText == "") {
       saveNote(title, "");
       widget.changeView("NoteView", title: title, body: "This is the body of your note");
-      Navigator.pop(context);
     }
   }
 
   @override
   Widget build(context) {
-    return SizedBox(
-      height: 200,
-      child: GradientBackground(
+    return
+      GradientBackground(
         widget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             const NoteTitle(text: "Enter the note name"),
@@ -67,19 +66,38 @@ class _addNoteOverlayState extends State<AddNoteOverlay>{
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: ElevatedButton(
-                onPressed: () {
-                 createNote(widget._editingController.text, context);
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(32, 37, 55, 1),),
-                ),
-                child: const NoteTitle(text: "Create note"),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      widget.changeView("MainPage");
+                    }, 
+                    child: const Text(
+                      "Back", 
+                      style: TextStyle(
+                        backgroundColor: Colors.transparent,
+                        decorationColor: Color.fromRGBO(201, 201, 201, 1),
+                        color: Color.fromRGBO(201, 201, 201, 1),
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                     createNote(widget._editingController.text, context);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(32, 37, 55, 1),),
+                    ),
+                    child: const NoteTitle(text: "Create note"),
+                  ),
+                ],
               ),
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

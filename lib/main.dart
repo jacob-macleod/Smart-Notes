@@ -44,14 +44,6 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  void _showAddNoteOverlay() {
-    showModalBottomSheet(
-      useSafeArea: true,
-      isScrollControlled: true,
-      context: context,
-      builder: (ctx) => AddNoteOverlay(changeView),
-    );
-  }
 
 
   Widget getView() {
@@ -59,6 +51,8 @@ class _MyAppState extends State<MyApp> {
       return MainPage(widget.box, changeView);
     } else if (screen == "NoteView") {
       return NoteView(changeView, title: noteTitle, body: noteBody);
+    } else if (screen == "AddNote") {
+      return AddNoteOverlay(changeView);
     } else {
       // print ("Wrong view selected: " + screen + " so showing main page");
       return MainPage(widget.box, changeView);
@@ -76,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       foregroundColor: const Color.fromRGBO(153, 164, 203, 1),
       child: const Icon(Icons.add),
       onPressed: () {
-        _showAddNoteOverlay();
+        changeView("AddNote");
       },
     ),
   );
