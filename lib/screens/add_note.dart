@@ -3,10 +3,31 @@ import 'package:smart_notes/widgets/note_title.dart';
 import 'package:smart_notes/widgets/gradient_background.dart';
 import 'package:smart_notes/notes.dart';
 
-class AddNoteOverlay extends StatelessWidget{
+class AddNoteOverlay extends StatefulWidget {
   AddNoteOverlay(this.changeView, {super.key});
   final Function(String, {String title, String body}) changeView;
   final _editingController = TextEditingController();
+
+  @override
+  State<AddNoteOverlay> createState () {
+    return _addNoteOverlayState();
+  }
+}
+
+class _addNoteOverlayState extends State<AddNoteOverlay>{
+  String errorText = "";
+
+  void createNote(String title, BuildContext context) {
+    setState(() {
+      errorText = validateNoteName(title);
+    });
+
+    if (errorText == "") {
+      saveNote(title, "");
+      widget.changeView("NoteView", title: title, body: "This is the body of your note");
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(context) {
@@ -20,11 +41,9 @@ class AddNoteOverlay extends StatelessWidget{
             const NoteTitle(text: "Enter the note name"),
             TextFormField(
               onFieldSubmitted: (data) {
-                saveNote(data, "");
-                changeView("NoteView", title: data, body: "This is the body of your note");
-                Navigator.pop(context);
+                createNote(data, context);
               },
-              controller: _editingController,
+              controller: widget._editingController,
               maxLines: 1,
               minLines: 1,
               autocorrect: true,
@@ -39,13 +58,18 @@ class AddNoteOverlay extends StatelessWidget{
                 labelText: 'Note',
               ),
             ),
+            Text(
+              errorText, 
+              style: const TextStyle(
+                color: Color.fromARGB(255, 205, 18, 18),
+                fontSize: 12,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: ElevatedButton(
                 onPressed: () {
-                  saveNote(_editingController.text, "");
-                  changeView("NoteView", title: _editingController.text, body: "");
-                  Navigator.pop(context);
+                 createNote(widget._editingController.text, context);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(32, 37, 55, 1),),

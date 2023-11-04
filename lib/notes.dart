@@ -60,6 +60,25 @@ void deleteAllNotes(var box) {
     my_box.put(1, newNotes);
   }
 
+  String validateNoteName(String name) {
+    String error = "";
+
+    var my_box = Hive.box("notes");
+    List<String> notes = my_box.get(1).split(noteSeperator);
+    // Look at each note
+    for (int note = 0; note < notes.length; note ++) {
+      if (notes[note].split(titleSeperator)[0] == name) {
+        error = "A note already exits with that name";
+      }
+    }
+
+    if (name == "") {
+      error = "You must enter a note name!";
+    }
+
+    return error;
+  }
+
 List<List<String>> getAllNotes(var box) {
   var myBox = Hive.box("notes");
   String allNotes = myBox.get(1);
