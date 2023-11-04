@@ -40,9 +40,11 @@ void deleteAllNotes(var box) {
   }
 
   void editNote(String title, String newBody) async {
+    print("Editing");
     var my_box = Hive.box("notes");
     List<String> notes = my_box.get(1).split(noteSeperator);
     String newNotes = "";
+
     // Look at each note
     for (int note = 0; note < notes.length; note ++) {
       if (notes[note].split(titleSeperator)[0] == title) {
@@ -88,7 +90,7 @@ List<List<String>> getAllNotes(var box) {
   // Replace allNotes with the data for the first element - this odd combination is to ensure the first note is not blank
   List<String> firstNote = notes[0].split(titleSeperator);
   noteData[0][0] = firstNote[0];
-  noteData[0][1] = firstNote[0];
+  noteData[0][1] = firstNote[1];
 
   // If there are more notes
   for (int i=1; i < notes.length; i++) {

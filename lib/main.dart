@@ -10,7 +10,6 @@ void main() async {
   var box = await Hive.openBox("notes");
   var myBox = Hive.box("notes");
   myBox.put(1, "");
-  print ("Initialised");
 
   runApp(
     MaterialApp(
