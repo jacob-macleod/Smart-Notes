@@ -8,6 +8,9 @@ import 'package:smart_notes/screens/add_note.dart';
 void main() async {
   await Hive.initFlutter();
   var box = await Hive.openBox("notes");
+  var myBox = Hive.box("notes");
+  myBox.put(1, "");
+  print ("Initialised");
 
   runApp(
     MaterialApp(
