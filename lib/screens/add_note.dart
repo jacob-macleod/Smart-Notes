@@ -21,7 +21,7 @@ class AddNoteOverlay extends StatelessWidget{
             TextFormField(
               onFieldSubmitted: (data) {
                 saveNote(data, "");
-                changeView("NoteView", title: data, body: "");
+                changeView("NoteView", title: data, body: "This is the body of your note");
                 Navigator.pop(context);
               },
               controller: _editingController,
@@ -50,7 +50,7 @@ class AddNoteOverlay extends StatelessWidget{
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(32, 37, 55, 1),),
                 ),
-                child: const NoteTitle(text: "Change note"),
+                child: const NoteTitle(text: "Create note"),
               ),
             ),
           ],

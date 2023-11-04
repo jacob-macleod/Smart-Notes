@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       screen = view;
     });
 
-    if (title != "" && body != "") {
+    if (title != "") {
       noteTitle = title;
       noteBody = body;
     }
